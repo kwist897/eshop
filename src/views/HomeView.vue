@@ -11,7 +11,7 @@ onMounted(async ()=>{
   const filter: CatalogFilter = {
     category: 'All'
   }
-  products.value = await (await (apiService.getCatalogByFilter(filter))).slice(0, 3)
+  products.value = (await (apiService.getCatalogByFilter(filter))).slice(0, 3)
 })
 </script>
 
@@ -32,7 +32,7 @@ onMounted(async ()=>{
                 </div>
               </div>
               <div class="flex flex-column align-items-center gap-3 py-5">
-                <img class="w-9 shadow-2 border-round" :src="import.meta.env.BASE_URL + `/images/${slotProps.data.img}`"
+                <img class="w-9 shadow-2 border-round" :src="`/images/${slotProps.data.img}`"
                   :alt="slotProps.data.name" />
                 <div class="text-2xl font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">{{
                   slotProps.data.name }}</div>
