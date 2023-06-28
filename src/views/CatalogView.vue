@@ -47,6 +47,9 @@ onMounted(async () => {
 watch(price, (newPrice) => {
     filter.value.priceMin = newPrice[0]
     filter.value.priceMax = newPrice[1];
+},
+{
+    deep: true
 })
 
 watch(search, (newSearch) => {
@@ -125,14 +128,18 @@ const layout = ref('grid' as "grid" | "list" | undefined);
                     <div class="flex justify-content-between align-items-center">
                         <div class="flex gap-3 justify-content-around">
                             <div
-                                class="card flex flex-column justify-content-center align-items-center gap-3 align-content-start">
+                                class="card flex flex-row justify-content-center align-items-center gap-3 align-content-start">
                                 <div class="flex justify-content-center align-items-start gap-3">
-                                    <InputText :value="price[0]" class="w-4" :max="max" :min="min" />
-                                    <InputText :value="price[1]" class="w-4" :max="max" :min="min" />
+                                    <InputNumber v-model="price[0]" class="" :max="max" :min="min" />
                                 </div>
                                 <Slider v-model="price" range class="w-14rem" :min="min" :max="max" />
+                                <div class="flex justify-content-center align-items-start gap-3">
+                                    <InputNumber v-model="price[1]" class="" :max="max" :min="min" />
+                                </div>
                             </div>
-                            <div class="flex flex-auto justify-content-center, align-items-center w-full">
+                        </div>
+                        <div class="card flex flex-row justify-content-end align-items-center gap-3 align-content-center">
+                            <div class="flex flex-auto justify-content-end align-items-center w-full">
                                 <span class="p-input-icon-left w-full">
                                     <i class="pi pi-search" />
                                     <InputText v-model="search" placeholder="Search" class="w-full" />
