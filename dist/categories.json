@@ -1,0 +1,65 @@
+[
+  {
+    "key": "0",
+    "label": "Все товары",
+    "code": "All"
+  },
+  {
+    "key": "1",
+    "label": "Парфюмерия",
+    "code": "Perfumery",
+    "children": [
+      {
+        "key": "1-0",
+        "label": "Духи",
+        "code": "Perfume"
+      },
+      {
+        "key": "1-1",
+        "label": "Одеколон",
+        "code": "Cologne"
+      }
+    ]
+  },
+  {
+    "key": "2",
+    "label": "Одежда",
+    "code": "Clothes",
+    "children": [
+      {
+        "key": "2-0",
+        "label": "Верхняя одежда",
+        "code": "Outerwear",
+        "children": [
+          {
+            "key": "2-0-0",
+            "label": "Куртки",
+            "code": "Jacket"
+          },
+          {
+            "key": "2-0-1",
+            "label": "Худи",
+            "code": "Hoodie"
+          }
+        ]
+      },
+      {
+        "key": "2-1",
+        "label": "Штаны",
+        "code": "Pants",
+        "children": [
+          {
+            "key": "2-1-0",
+            "label": "Брюки",
+            "code": "Trousers"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "key": "3",
+    "label": "Электроника",
+    "code": "Electronics"
+  }
+]

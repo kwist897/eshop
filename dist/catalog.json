@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "name": "Духи1",
+      "description": "Описание духов1",
+      "price": 30.55,
+      "rating": 4.3,
+      "category": "Cologne",
+      "img": "12.jpg"
+    },
+    {
+      "name": "Духи2Духи2Духи2Духи2Духи2Духи2Духи2Духи2Духи2Духи2",
+      "description": "Описание духов2Описание духов2Описание духов2Описание духов2Описание духов2Описание духов2",
+      "price": 3099.55,
+      "category": "Perfume",
+      "rating": 5,
+      "img": "12.jpg"
+    },
+    {
+      "name": "Духи3",
+      "description": "Описание духов3",
+      "price": 1243.55,
+      "category": "Jacket",
+      "rating": 3.7,
+      "img": "12.jpg"
+    },
+    {
+      "name": "Духи4",
+      "description": "Описание духов4",
+      "price": 33345.55,
+      "category": "Hoodie",
+      "rating": 4,
+      "img": "12.jpg"
+    },
+    {
+      "name": "Духи5",
+      "description": "Описание духов5",
+      "price": 3022299,
+      "category": "Trousers",
+      "rating": 4.8,
+      "img": "12.jpg"
+    },
+    {
+      "name": "Духи6",
+      "description": "Описание духов6",
+      "price": 309,
+      "category": "Pants",
+      "rating": 4.9,
+      "img": "12.jpg"
+    },
+    {
+      "name": "Духи7",
+      "description": "Описание духов7",
+      "price": 30991,
+      "category": "Electronics",
+      "rating": 3.2,
+      "img": "12.jpg"
+    },
+    {
+      "name": "Духи8",
+      "description": "Описание духов8",
+      "price": 4004,
+      "category": "Perfumery",
+      "rating": 2.7,
+      "img": "12.jpg"
+    },
+    {
+      "name": "Духи9",
+      "description": "Описание духов9",
+      "price": 105,
+      "category": "Outerwear",
+      "rating": 3.1,
+      "img": "12.jpg"
+    },
+    {
+      "name": "Духи10",
+      "description": "Описание духов10",
+      "price": 5000,
+      "category": "Electronics",
+      "rating": 1.7,
+      "img": "12.jpg"
+    }
+  ]
+}
