@@ -144,7 +144,7 @@ const layout = ref('grid' as "grid" | "list" | undefined);
                     <div class="col-12">
                         <div class="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
                             <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
-                                :src="`../src/assets/images/${slotProps.data.img}`" :alt="slotProps.data.name" />
+                                :src="`/images/${slotProps.data.img}`" :alt="slotProps.data.name" />
                             <div
                                 class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4 w-8">
                                 <div class="flex flex-column align-items-center sm:align-items-start flex-grow-0 gap-3 w-8">
@@ -180,7 +180,7 @@ const layout = ref('grid' as "grid" | "list" | undefined);
                                 </div>
                             </div>
                             <div class="flex flex-column align-items-center gap-3 py-5">
-                                <img class="w-9 shadow-2 border-round" :src="`../src/assets/images/${slotProps.data.img}`"
+                                <img class="w-9 shadow-2 border-round" :src="`/images/${slotProps.data.img}`"
                                     :alt="slotProps.data.name" />
                                 <div
                                     class="text-2xl font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">

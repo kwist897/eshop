@@ -7,7 +7,7 @@ const apiService = {
   async getCatalogByFilter(filter: CatalogFilter): Promise<Product[]> {
     const categories = await this.getCategories();
 
-    let products = await fetch('/src/assets/catalog.json')
+    let products = await fetch('/catalog.json')
       .then((res) => res.json())
       .then(async (json: Catalog) => {
         return filter.category === 'All'
@@ -34,12 +34,12 @@ const apiService = {
     return Promise.resolve(products)
   },
   async getProductsByName(name: string): Promise<Product[]> {
-    return await fetch('/src/assets/catalog.json')
+    return await fetch('/catalog.json')
       .then((res) => res.json())
       .then((json: Catalog) => Promise.resolve(json.products.filter((e) => e.name.includes(name))))
   },
   async getCategories(): Promise<Category[]> {
-    return await fetch('/src/assets/categories.json')
+    return await fetch('/categories.json')
     .then((res) => res.json())
     .then((res) => res as Category[])
   },
