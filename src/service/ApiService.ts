@@ -7,7 +7,7 @@ const apiService = {
   async getCatalogByFilter(filter: CatalogFilter): Promise<Product[]> {
     const categories = await this.getCategories();
 
-    let products = await fetch('/catalog.json')
+    let products = await fetch(import.meta.env.BASE_URL + '/catalog.json')
       .then((res) => res.json())
       .then(async (json: Catalog) => {
         return filter.category === 'All'
