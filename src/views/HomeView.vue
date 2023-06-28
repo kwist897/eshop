@@ -6,6 +6,7 @@ import type Product from '@/model/Product';
 
 const layout = ref('grid' as "grid");
 const products = ref([] as Product[]);
+const imageUrl = ref(new URL('images', import.meta.env.BASE_URL))
 
 onMounted(async ()=>{
   const filter: CatalogFilter = {
@@ -32,7 +33,7 @@ onMounted(async ()=>{
                 </div>
               </div>
               <div class="flex flex-column align-items-center gap-3 py-5">
-                <img class="w-9 shadow-2 border-round" :src="`/images/${slotProps.data.img}`"
+                <img class="w-9 shadow-2 border-round" :src="`${imageUrl}/${slotProps.data.img}`"
                   :alt="slotProps.data.name" />
                 <div class="text-2xl font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">{{
                   slotProps.data.name }}</div>
