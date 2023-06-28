@@ -39,7 +39,7 @@ const apiService = {
       .then((json: Catalog) => Promise.resolve(json.products.filter((e) => e.name.includes(name))))
   },
   async getCategories(): Promise<Category[]> {
-    return await fetch('/categories.json')
+    return await fetch('/eshop/categories.json')
     .then((res) => res.json())
     .then((res) => res as Category[])
   },
