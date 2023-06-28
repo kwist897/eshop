@@ -29,12 +29,12 @@ const searchByField = () => {
 <template>
     <div class="flex gap-5 px-8 shadow-2 flex-wrap">
         <div class="flex flex-wrap text-center justify-content-center align-items-center gap-5 col-4">
-            <div class="text-lg flex-none">
+            <div class="flex-none">
                 <h1 class="cursor-pointer" @click="router.push('/')">MagaShop</h1>
             </div>
             <div class="flex-none flex text-center justify-content-center align-items-center">
                 <!-- <TieredMenu ref="menu" id="overlay_tmenu" :model="items" popup /> -->
-                <Button class="no-outline w-full text-lg" icon="pi pi-list" label="Категории" @click="toggle"></Button>
+                <Button class="no-outline w-full" icon="pi pi-list" label="Категории" @click="toggle"></Button>
                 <OverlayPanel ref="op">
                     <Tree :value="items" class="border-none p-0" selectionMode="single" v-model:selectionKeys="selectedKey"
                         @node-select="e => resolve(e as any)" />

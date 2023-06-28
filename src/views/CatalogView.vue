@@ -48,9 +48,9 @@ watch(price, (newPrice) => {
     filter.value.priceMin = newPrice[0]
     filter.value.priceMax = newPrice[1];
 },
-{
-    deep: true
-})
+    {
+        deep: true
+    })
 
 watch(search, (newSearch) => {
     filter.value.name = newSearch
@@ -120,9 +120,9 @@ const layout = ref('grid' as "grid" | "list" | undefined);
             </div>
         </Dialog>
         <div class="pb-5">
-            <span class="text-5xl">Товары категории: {{ currentCategory?.label }}</span>
+            <span class="text-2xl">Товары категории: {{ currentCategory?.label }}</span>
         </div>
-        <div class="card col-8">
+        <div class="card col-7">
             <DataView :value="filteredProducts" :layout="layout" paginator :rows="6" :dataKey="'name'">
                 <template #header>
                     <div class="flex justify-content-between align-items-center">
@@ -158,10 +158,10 @@ const layout = ref('grid' as "grid" | "list" | undefined);
                                 class="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4 w-8">
                                 <div class="flex flex-column align-items-center sm:align-items-start flex-grow-0 gap-3 w-8">
                                     <div
-                                        class="text-2xl font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">
+                                        class="text-lg font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">
                                         {{ slotProps.data.name }}</div>
                                     <div
-                                        class="text-xl font-light overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">
+                                        class="font-light overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">
                                         {{ slotProps.data.description }}</div>
                                     <Rating v-model="slotProps.data.rating" :cancel="false" readonly></Rating>
                                     <div class="flex align-items-center gap-3">
@@ -172,7 +172,7 @@ const layout = ref('grid' as "grid" | "list" | undefined);
                                     </div>
                                 </div>
                                 <div class="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-                                    <span class="text-2xl font-semibold">₽{{ slotProps.data.price }}</span>
+                                    <span class="text-lg font-semibold">₽{{ slotProps.data.price }}</span>
                                     <Button icon="pi pi-shopping-cart" rounded @click="buyDialog = !buyDialog"></Button>
                                 </div>
                             </div>
@@ -188,19 +188,18 @@ const layout = ref('grid' as "grid" | "list" | undefined);
                                     <span class="font-semibold">{{ slotProps.data.category }}</span>
                                 </div>
                             </div>
-                            <div class="flex flex-column align-items-center gap-3 py-5">
+                            <div class="flex flex-column align-items-center gap-3 py-5 text-center">
                                 <img class="w-9 shadow-2 border-round" :src="`${imageUrl}/${slotProps.data.img}`"
                                     :alt="slotProps.data.name" />
                                 <div
-                                    class="text-2xl font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">
+                                    class="text-lg font-bold overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">
                                     {{ slotProps.data.name }}</div>
-                                <div
-                                    class="text-xl font-light overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">
+                                <div class="font-light overflow-hidden white-space-nowrap text-overflow-ellipsis w-full">
                                     {{ slotProps.data.description }}</div>
                                 <Rating v-model="slotProps.data.rating" :cancel="false" readonly></Rating>
                             </div>
                             <div class="flex align-items-center justify-content-between">
-                                <span class="text-2xl font-semibold">₽{{ slotProps.data.price }}</span>
+                                <span class="text-lg font-semibold">₽{{ slotProps.data.price }}</span>
                                 <Button icon="pi pi-shopping-cart" rounded @click="buyDialog = !buyDialog"></Button>
                             </div>
                         </div>
