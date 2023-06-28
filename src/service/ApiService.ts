@@ -34,12 +34,12 @@ const apiService = {
     return Promise.resolve(products)
   },
   async getProductsByName(name: string): Promise<Product[]> {
-    return await fetch('/catalog.json')
+    return await fetch(import.meta.env.BASE_URL + '/catalog.json')
       .then((res) => res.json())
       .then((json: Catalog) => Promise.resolve(json.products.filter((e) => e.name.includes(name))))
   },
   async getCategories(): Promise<Category[]> {
-    return await fetch('/eshop/categories.json')
+    return await fetch(import.meta.env.BASE_URL + '/categories.json')
     .then((res) => res.json())
     .then((res) => res as Category[])
   },
