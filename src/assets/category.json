@@ -1,0 +1,47 @@
+[
+  {
+    "label": "Все товары",
+    "code": "All"
+  },
+  {
+    "label": "Парфюмерия",
+    "code": "Perfumery",
+    "parent": "All"
+  },
+  {
+    "code": "Perfume",
+    "parent": "Perfumery"
+  },
+  {
+    "code": "Cologne",
+    "parent": "Perfumery"
+  },
+  {
+    "code": "Clothes",
+    "parent": "All"
+  },
+  {
+    "code": "Outerwear",
+    "parent": "Clothes"
+  },
+  {
+    "code": "Jacket",
+    "parent": "Outerwear"
+  },
+  {
+    "code": "Hoodie",
+    "parent": "Outerwear"
+  },
+  {
+    "code": "Pants",
+    "parent": "Clothes"
+  },
+  {
+    "code": "Trousers",
+    "parent": "Pants"
+  },
+  {
+    "code": "Electronics",
+    "parent": "All"
+  }
+]
