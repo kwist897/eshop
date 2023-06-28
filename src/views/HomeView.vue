@@ -33,6 +33,31 @@ const send = () => {
 
 <template>
   <div class="h-full w-full flex flex-column align-items-center py-8">
+    <Dialog v-model:visible="buyDialog" modal header="Оставьте заявку" :style="{ width: '50vw' }">
+            <div
+                class="card flex flex-column justify-content-center align-items-center align-content-center text-center gap-3">
+                <div class="p-inputgroup flex-1">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-user"></i>
+                    </span>
+                    <InputText placeholder="Имя" v-model="orderForm.name" />
+                </div>
+
+                <div class="p-inputgroup flex-1">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-shopping-bag"></i>
+                    </span>
+                    <InputText placeholder="Товары, интересущие вас" v-model="orderForm.products" />
+                </div>
+
+                <div class="p-inputgroup flex-1">
+                    <span class="p-inputgroup-addon">@</span>
+                    <InputText placeholder="Ваша почта" v-model="orderForm.email" />
+                </div>
+
+                <Button label="Отправить" @click="send()" />
+            </div>
+        </Dialog>
     <div class="card col-7">
       <div class="pb-5 text-center">
         <span class="text-2xl">Избранные товары</span>
@@ -58,7 +83,7 @@ const send = () => {
               </div>
               <div class="flex align-items-center justify-content-between">
                 <span class="text-lg font-semibold">₽{{ slotProps.data.price }}</span>
-                <Button icon="pi pi-shopping-cart" rounded></Button>
+                <Button icon="pi pi-shopping-cart" rounded @click="buyDialog = !buyDialog"></Button>
               </div>
             </div>
           </div>
