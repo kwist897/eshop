@@ -6,7 +6,7 @@ import type Product from '@/model/Product';
 
 const layout = ref('grid' as "grid");
 const products = ref([] as Product[]);
-const imageUrl = ref(new URL('images', import.meta.env.BASE_URL))
+const imageUrl = ref(import.meta.env.BASE_URL + "images")
 
 onMounted(async ()=>{
   const filter: CatalogFilter = {

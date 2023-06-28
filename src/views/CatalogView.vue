@@ -25,7 +25,7 @@ const toast = useToast();
 const categories = ref({} as Category[])
 const currentCategory = ref({} as Category | null)
 
-const imageUrl = ref(new URL('/images', import.meta.env.BASE_URL))
+const imageUrl = ref(import.meta.env.BASE_URL + "images")
 
 onMounted(async () => {
     filter.value.category = props.category
