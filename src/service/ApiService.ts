@@ -1,7 +1,7 @@
-import Catalog from '@/model/Catalog'
-import CatalogFilter from '@/model/CatalogFilter'
-import Category from '@/model/Category'
-import Product from '@/model/Product'
+import type Catalog from '@/model/Catalog'
+import type CatalogFilter from '@/model/CatalogFilter'
+import type Category from '@/model/Category'
+import type Product from '@/model/Product'
 
 const apiService = {
   async getCatalogByFilter(filter: CatalogFilter): Promise<Product[]> {
@@ -53,8 +53,6 @@ const apiService = {
   },
 
   findCategory(categories: Category[], searchCode: string): Category | null {
-    console.log(categories)
-    console.log(searchCode)
     let category: Category | null = null
 
     categories.forEach((c) => {

@@ -1,3 +1,5 @@
+/* eslint-disable vue/no-reserved-component-names */
+/* eslint-disable vue/multi-word-component-names */
 import './assets/main.css'
 
 import { createApp } from 'vue'
@@ -13,7 +15,6 @@ import DataViewLayoutOptions from 'primevue/dataviewlayoutoptions'
 import Rating from 'primevue/rating'
 import OverlayPanel from 'primevue/overlaypanel'
 import DataView from 'primevue/dataview';
-import InputText from 'primevue/inputtext'
 import Slider from 'primevue/slider'
 import InputNumber from 'primevue/inputnumber'
 import Toast from 'primevue/toast';
@@ -36,7 +37,6 @@ app.component('InputText', InputText)
 app.component('Button', Button)
 app.component('Divider', Divider)
 app.component('Slider', Slider )
-app.component('InputText', InputText)
 app.component('Dialog', Dialog)
 app.component('InputNumber', InputNumber)
 app.component('Toast', Toast)

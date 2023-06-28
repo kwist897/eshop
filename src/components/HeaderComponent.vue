@@ -1,36 +1,29 @@
 <script setup lang="ts">
-import router from '@/router';
-import { onMounted, ref } from 'vue';
-import Category from '@/model/Category';
+import router from '@/router'
+import { onMounted, ref } from 'vue'
+import type Category from '@/model/Category'
 import apiService from '@/service/ApiService'
-import jsonCategory from '@/assets/categories'
-import { TreeSelectionKeys } from 'primevue/tree';
+import type TreeSelectionKeys from 'primevue/tree'
 
 const selectedKey = ref(undefined as TreeSelectionKeys | undefined);
 const search = ref("");
 const op = ref();
 const items = ref([] as Category[])
 
-onMounted(() => {
-    const categories = jsonCategory as Category[]
-    categories.forEach(c => setCommandRecursively(c))
-    items.value = categories;
+onMounted(async () => {
+    items.value = await apiService.getCategories()
 })
 
 const toggle = (event: any) => {
     op.value.toggle(event)
 };
 
-const resolve = async (category: Category) => {
-    router.push({ name: 'catalog', params: {category: category.code}})
+const resolve = (category: Category) => {
+    router.push({ name: 'catalog', params: { category: category.code } })
 }
 
-const setCommandRecursively = (category: Category): Category => {
-    category.command = (e) => resolve(e);
-    if (category.children) {
-        category.children.forEach(c => setCommandRecursively(c))
-    }
-    return category
+const searchByField = () => {
+    router.push({ name: 'catalog', params: { category: 'All', searchName: search.value } })
 }
 </script>
 <template>
@@ -43,7 +36,8 @@ const setCommandRecursively = (category: Category): Category => {
                 <!-- <TieredMenu ref="menu" id="overlay_tmenu" :model="items" popup /> -->
                 <Button class="no-outline w-full text-lg" icon="pi pi-list" label="Категории" @click="toggle"></Button>
                 <OverlayPanel ref="op">
-                    <Tree :value="items" class="border-none p-0" selectionMode="single" v-model:selectionKeys="selectedKey" @node-select="e=>resolve(e)" />
+                    <Tree :value="items" class="border-none p-0" selectionMode="single" v-model:selectionKeys="selectedKey"
+                        @node-select="e => resolve(e as any)" />
                 </OverlayPanel>
             </div>
         </div>
@@ -52,7 +46,7 @@ const setCommandRecursively = (category: Category): Category => {
                 <i class="pi pi-search" />
                 <InputText v-model="search" placeholder="Search" class="w-full" />
             </span>
-            <Button icon="pi pi-search"></Button>
+            <Button icon="pi pi-search" @click="searchByField()"></Button>
         </div>
     </div>
 </template>

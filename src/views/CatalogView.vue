@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import { onMounted, onUpdated, ref, watch } from 'vue'
-import router from '@/router';
-import Catalog from '@/model/Catalog'
-import Product from '@/model/Product';
+import { onMounted, ref, watch } from 'vue'
+import type Product from '@/model/Product';
 import apiService from '@/service/ApiService';
-import CatalogFilter from '@/model/CatalogFilter';
-import FormOrder from '@/model/FormOrder';
+import type CatalogFilter from '@/model/CatalogFilter';
+import type FormOrder from '@/model/FormOrder';
 import { useToast } from 'primevue/usetoast';
-import Category from '@/model/Category';
+import type Category from '@/model/Category';
 
 const props = defineProps({
     category: { type: String, required: true },
@@ -33,14 +31,27 @@ onMounted(async () => {
     min.value = Math.min(...products.value.map(p => p.price))
     max.value = Math.max(...products.value.map(p => p.price))
     price.value = [min.value, max.value] as number[]
+    if (props.searchName) {
+        products.value = products.value.filter(p => p.name.toLocaleLowerCase().includes(props.searchName!.toLocaleLowerCase()))
+    }
     filteredProducts.value = products.value
+
 
     categories.value = await apiService.getCategories();
 
     currentCategory.value = apiService.findCategory(categories.value, props.category)
 })
 
-watch(filter, (newFilter, oldVal) => {
+watch(price, (newPrice) => {
+    filter.value.priceMin = newPrice[0]
+    filter.value.priceMax = newPrice[1];
+})
+
+watch(search, (newSearch) => {
+    filter.value.name = newSearch
+})
+
+watch(filter, (newFilter) => {
     filteredProducts.value = products.value
         .filter(p => {
             if (newFilter.priceMax && newFilter.priceMin) {
@@ -55,22 +66,13 @@ watch(filter, (newFilter, oldVal) => {
         })
         .filter(p => {
             if (newFilter.name) {
-                return p.name.toLowerCase().includes(newFilter.name)
+                return p.name.toLocaleLowerCase().includes(newFilter.name.toLocaleLowerCase())
             }
             return true;
         })
 },
     { deep: true }
 )
-
-watch(price, (newPrice) => {
-    filter.value.priceMin = newPrice[0]
-    filter.value.priceMax = newPrice[1];
-})
-
-watch(search, (newSearch) => {
-    filter.value.name = newSearch
-})
 
 const send = () => {
     toast.add({
@@ -113,18 +115,18 @@ const layout = ref('grid' as "grid" | "list" | undefined);
             </div>
         </Dialog>
         <div class="pb-5">
-            <span class="text-5xl">Товары категории: {{currentCategory?.label}}</span>
+            <span class="text-5xl">Товары категории: {{ currentCategory?.label }}</span>
         </div>
         <div class="card col-8">
-            <DataView :value="filteredProducts" :layout="layout" paginator :rows="6">
+            <DataView :value="filteredProducts" :layout="layout" paginator :rows="6" :dataKey="'name'">
                 <template #header>
                     <div class="flex justify-content-between align-items-center">
                         <div class="flex gap-3 justify-content-around">
                             <div
                                 class="card flex flex-column justify-content-center align-items-center gap-3 align-content-start">
                                 <div class="flex justify-content-center align-items-start gap-3">
-                                    <InputText v-model.number="price[0]" class="w-4" :max="max" :min="min" />
-                                    <InputText v-model.number="price[1]" class="w-4" :max="max" :min="min" />
+                                    <InputText :value="price[0]" class="w-4" :max="max" :min="min" />
+                                    <InputText :value="price[1]" class="w-4" :max="max" :min="min" />
                                 </div>
                                 <Slider v-model="price" range class="w-14rem" :min="min" :max="max" />
                             </div>

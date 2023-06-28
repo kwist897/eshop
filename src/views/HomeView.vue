@@ -1,12 +1,18 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import json from '@/assets/catalog'
-import Catalog from '@/model/Catalog'
+import apiService from '@/service/ApiService';
+import type CatalogFilter from '@/model/CatalogFilter';
+import type Product from '@/model/Product';
 
 const layout = ref('grid' as "grid");
-const catalog = ref(json as Catalog)
+const products = ref([] as Product[]);
 
-const products = ref(catalog.value.products.slice(0, 3));
+onMounted(async ()=>{
+  const filter: CatalogFilter = {
+    category: 'All'
+  }
+  products.value = await (await (apiService.getCatalogByFilter(filter))).slice(0, 3)
+})
 </script>
 
 <template>
@@ -15,7 +21,7 @@ const products = ref(catalog.value.products.slice(0, 3));
       <div class="pb-5 text-center">
         <span class="text-5xl">Избранные товары</span>
       </div>
-      <DataView :value="products" :layout="layout">
+      <DataView :value="products" :layout="layout" :dataKey="'name'">
         <template #grid="slotProps">
           <div class="col-12 sm:col-6 lg:col-12 xl:col-4 p-2">
             <div class="p-4 border-1 surface-border surface-card border-round">
