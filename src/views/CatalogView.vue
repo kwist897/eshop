@@ -24,6 +24,7 @@ const orderForm = ref({} as FormOrder)
 const toast = useToast();
 const categories = ref({} as Category[])
 const currentCategory = ref({} as Category | null)
+const layout = ref('grid' as "grid" | "list" | undefined);
 
 const imageUrl = ref(import.meta.env.BASE_URL + "images")
 
@@ -89,8 +90,6 @@ const send = () => {
     buyDialog.value = !buyDialog.value
 
 }
-
-const layout = ref('grid' as "grid" | "list" | undefined);
 </script>
 <template>
     <div class="h-full w-full flex flex-column align-items-center py-8">
