@@ -11,7 +11,7 @@ export default defineConfig({
   plugins: [
     vue(),
   ],
-  base: '/vue-demo/',
+  base: '/eshop/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
